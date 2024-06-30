@@ -215,14 +215,14 @@
 
 
 /////////////////////////////////////////////////////
-//const mainSection = document.getElementById("main-list-recipes");
-//const colorChangeButton = document.getElementById("colorChangeButton");
+const mainSection = document.getElementById("main-list-recipes");
+const colorChangeButton = document.getElementById("colorChangeButton");
 
-//const colors = ["white", "black", "lightgray"];
-//let currentColorIndex = 0;
+const colors = ["white", "black", "lightgray"];
+let currentColorIndex = 0;
 
-//colorChangeButton.addEventListener("click", () => {
-//    currentColorIndex = (currentColorIndex + 1) % colors.length;
- //   mainSection.style.backgroundColor = colors[currentColorIndex];
- //   console.log(`Changed to ${colors[currentColorIndex]}`);
-//});
+colorChangeButton.addEventListener("click", () => {
+    currentColorIndex = (currentColorIndex + 1) % colors.length;
+    mainSection.style.backgroundColor = colors[currentColorIndex];
+    console.log(`Changed to ${colors[currentColorIndex]}`);
+});
