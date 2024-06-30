@@ -1,0 +1,120 @@
+
+#main-list-recipes {
+    padding: 20px;
+    border: 1px solid #000;
+    background-color: white; 
+}
+
+.margin-right-custom {
+    margin-left: 20px; 
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 500px; 
+    object-fit: cover; 
+}
+
+
+.card {
+    margin: 15px;
+
+}
+
+.card-img-top {
+    height: 200px; 
+    object-fit: cover; 
+}
+
+
+
+#main_people {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: even;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cart-item .remove-btn {
+    cursor: pointer;
+    color: red;
+    margin-left: 10px;
+}
+
+#todo-list-container {
+    margin: 20px;
+}
+
+
+.footer1 .py-5 {
+    background-color: #2b124c; 
+    color: #ffffff; 
+}
+
+
+footer h5 p {
+    color: #fcfcfc;
+}
+
+footer h5 p:hover {
+    color: #000000; 
+}
+
+
+footer ul.list-unstyled a i:hover {
+    filter: none; 
+    color: aquamarine;
+}
+
+
+.btn-custom {
+    border: 0;
+    background-image: linear-gradient(
+        150deg,
+        #fbe4d8,
+        #864f5c,
+        #522b5b
+    );
+    border-radius: 8px;
+    color: #fff;
+    display: flex;
+    font-size: 18px;
+    padding: 4px 12px; 
+    cursor: pointer;
+    transition: .3s;
+    text-align: center; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+.btn-custom:hover {
+    background-image: linear-gradient(
+        150deg,
+        #522b5b,
+        #864f5c,
+        #fbe4d8
+    );
+}
+
+
+.iconos .instagram:hover{
+    color:#f807c4;
+  }
+
+  .iconos .twitter:hover{
+    color:#07e8f8;
+  }
+  .iconos .facebook:hover{
+    color:#0703fa;
+  }
+  .iconos .github:hover{
+    color: #03b403;
+  }
+  .iconos .discord:hover{
+    color: #b40303;
+  }
+

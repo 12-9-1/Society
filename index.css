@@ -1,0 +1,22 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.cover-container {
+    background-image: url('https://www.despiertaymira.com/wp-content/uploads/2018/06/etienne_jacob-necesary-disorder.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white; 
+}
+header, main, footer {
+    background: rgba(0, 0, 0, 0.5); 
+    width: 100%;
+    padding: 20px;
+}
