@@ -45,13 +45,27 @@
     margin-left: 10px;
 }
 
+.btn-primary {
+    background-color: rgb(55, 55, 121);
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    padding: 8px 16px; 
+}
+.btn-danger {
+    background-color: rgb(129, 28, 28);
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    padding: 8px 16px; 
+}
+
+
 #todo-list-container {
     margin: 20px;
 }
 
 
 .footer1 .py-5 {
-    background-color: #2b124c; 
+    background-color: #030303; 
     color: #ffffff; 
 }
 
@@ -75,9 +89,9 @@ footer ul.list-unstyled a i:hover {
     border: 0;
     background-image: linear-gradient(
         150deg,
-        #fbe4d8,
-        #864f5c,
-        #522b5b
+        #7a7a7a,
+        #333333,
+        #161616
     );
     border-radius: 8px;
     color: #fff;
@@ -94,9 +108,9 @@ footer ul.list-unstyled a i:hover {
 .btn-custom:hover {
     background-image: linear-gradient(
         150deg,
-        #522b5b,
-        #864f5c,
-        #fbe4d8
+        #161616
+        #333333,
+        #7a7a7a
     );
 }
 
