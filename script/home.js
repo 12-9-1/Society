@@ -107,114 +107,135 @@
               
             ];
 
-            const sectionToRender = document.getElementById("main_people");
-            const cart = document.getElementById("cart");
-            const totalPriceElement = document.getElementById("total-price");
-            let cartItems = [];
+        
+    const sectionToRender = document.getElementById("main_people");
+    const cart = document.getElementById("cart");
+    const totalPriceElement = document.getElementById("total-price");
+    const purchases = document.getElementById("purchases");
+    let cartItems = [];
 
-            const createPersonCard = (person) => {
-                const { title, url, description, name, imageURL, category, price, idProduct } = person;
+    const createPersonCard = (person) => {
+        const { title, url, description, name, imageURL, category, price, idProduct } = person;
 
-                const card = document.createElement("div");
-                card.classList.add("card", "m-3");
-                card.style.width = "18rem";
+        const card = document.createElement("div");
+        card.classList.add("card", "m-3");
+        card.style.width = "18rem";
 
-                const image = document.createElement("img");
-                image.src = imageURL;
-                image.classList.add("card-img-top");
-                image.alt = title;
+        const image = document.createElement("img");
+        image.src = imageURL;
+        image.classList.add("card-img-top");
+        image.alt = title;
 
-                const cardBody = document.createElement("div");
-                cardBody.classList.add("card-body");
+        const cardBody = document.createElement("div");
+        cardBody.classList.add("card-body");
 
-                const cardTitle = document.createElement("h5");
-                cardTitle.classList.add("card-title");
-                cardTitle.textContent = title;
+        const cardTitle = document.createElement("h5");
+        cardTitle.classList.add("card-title");
+        cardTitle.textContent = title;
 
-                const cardText = document.createElement("p");
-                cardText.classList.add("card-text");
-                cardText.textContent = description;
+        const cardText = document.createElement("p");
+        cardText.classList.add("card-text");
+        cardText.textContent = description;
 
-                const cardAuthor = document.createElement("p");
-                cardAuthor.classList.add("card-text");
-                cardAuthor.textContent = `Autor: ${name}`;
+        const cardAuthor = document.createElement("p");
+        cardAuthor.classList.add("card-text");
+        cardAuthor.textContent = `Autor: ${name}`;
 
-                const cardCategory = document.createElement("p");
-                cardCategory.classList.add("card-text");
-                cardCategory.textContent = `Categoría: ${category}`;
+        const cardCategory = document.createElement("p");
+        cardCategory.classList.add("card-text");
+        cardCategory.textContent = `Categoría: ${category}`;
 
-                const cardPrice = document.createElement("p");
-                cardPrice.classList.add("card-text");
-                cardPrice.textContent = `Precio: $${price}`;
+        const cardPrice = document.createElement("p");
+        cardPrice.classList.add("card-text");
+        cardPrice.textContent = `Precio: $${price}`;
 
-                const cartButton = document.createElement("button");
-                cartButton.classList.add("btn", "btn-primary");
-                cartButton.textContent = "Agregar al carrito";
-                cartButton.onclick = () => addToCart(person);
+        const cartButton = document.createElement("button");
+        cartButton.classList.add("btn", "btn-primary");
+        cartButton.textContent = "Agregar al carrito";
+        cartButton.onclick = () => addToCart(person);
 
-                cardBody.appendChild(cardTitle);
-                cardBody.appendChild(cardAuthor);
-                cardBody.appendChild(cardCategory);
-                cardBody.appendChild(cardText);
-                cardBody.appendChild(cardPrice);
-                cardBody.appendChild(cartButton);
+        cardBody.appendChild(cardTitle);
+        cardBody.appendChild(cardAuthor);
+        cardBody.appendChild(cardCategory);
+        cardBody.appendChild(cardText);
+        cardBody.appendChild(cardPrice);
+        cardBody.appendChild(cartButton);
 
-                card.appendChild(image);
-                card.appendChild(cardBody);
+        card.appendChild(image);
+        card.appendChild(cardBody);
 
-                return card;
-            };
+        return card;
+    };
 
-            const addToCart = (product) => {
-                const cartItem = document.getElementById(`cart-item-${product.idProduct}`);
-                if (cartItem) {
-                    const quantityElement = cartItem.querySelector('.quantity');
-                    let quantity = parseInt(quantityElement.textContent);
-                    quantityElement.textContent = ++quantity;
-                } else {
-                    const newCartItem = document.createElement("li");
-                    newCartItem.classList.add("list-group-item", "cart-item");
-                    newCartItem.id = `cart-item-${product.idProduct}`;
-                    newCartItem.innerHTML = `
-                        ${product.title} - Cantidad: <span class="quantity">1</span>
-                        <span class="remove-btn" onclick="removeFromCart('${product.idProduct}', ${product.price})">x</span>
-                    `;
-                    cart.appendChild(newCartItem);
-                }
-                updateTotalPrice(product.price);
-                cartItems.push(product);
-            };
+    const addToCart = (product) => {
+        const cartItem = document.getElementById(`cart-item-${product.idProduct}`);
+        if (cartItem) {
+            const quantityElement = cartItem.querySelector('.quantity');
+            let quantity = parseInt(quantityElement.textContent);
+            quantityElement.textContent = ++quantity;
+        } else {
+            const newCartItem = document.createElement("li");
+            newCartItem.classList.add("list-group-item", "cart-item");
+            newCartItem.id = `cart-item-${product.idProduct}`;
+            newCartItem.innerHTML = `
+                ${product.title} - Cantidad: <span class="quantity">1</span>
+                <span class="remove-btn" onclick="removeFromCart('${product.idProduct}', ${product.price})"><i class="bi bi-trash fa-2xl"></i></span>
+            `;
+            cart.appendChild(newCartItem);
+        }
+        updateTotalPrice(product.price);
+        cartItems.push(product);
+    };
 
-            window.removeFromCart = (productId, productPrice) => {
-                const cartItem = document.getElementById(`cart-item-${productId}`);
-                const quantityElement = cartItem.querySelector('.quantity');
-                let quantity = parseInt(quantityElement.textContent);
-                if (quantity > 1) {
-                    quantityElement.textContent = --quantity;
-                } else {
-                    cart.removeChild(cartItem);
-                }
-                updateTotalPrice(-productPrice);
-                cartItems = cartItems.filter(item => item.idProduct !== productId || (--quantity) >= 0);
-            };
+    window.removeFromCart = (productId, productPrice) => {
+        const cartItem = document.getElementById(`cart-item-${productId}`);
+        const quantityElement = cartItem.querySelector('.quantity');
+        let quantity = parseInt(quantityElement.textContent);
+        if (quantity > 1) {
+            quantityElement.textContent = --quantity;
+        } else {
+            cart.removeChild(cartItem);
+        }
+        updateTotalPrice(-productPrice);
+        cartItems = cartItems.filter(item => item.idProduct !== productId || (--quantity) >= 0);
+    };
 
-            const updateTotalPrice = (amount) => {
-                const currentTotal = parseFloat(totalPriceElement.textContent);
-                totalPriceElement.textContent = (currentTotal + amount).toFixed(2);
-            };
+    const updateTotalPrice = (amount) => {
+        const currentTotal = parseFloat(totalPriceElement.textContent);
+        totalPriceElement.textContent = (currentTotal + amount).toFixed(2);
+    };
 
-            const renderPeople = () => {
-                people.forEach((person) => {
-                    const personCard = createPersonCard(person);
-                    sectionToRender.appendChild(personCard);
-                });
-            };
+    const renderPeople = () => {
+        people.forEach((person) => {
+            const personCard = createPersonCard(person);
+            sectionToRender.appendChild(personCard);
+        });
+    };
 
-            renderPeople();
+    const completePurchase = () => {
+        if (cartItems.length === 0) {
+            alert("No hay productos en el carrito.");
+            return;
+        }
+
+        cartItems.forEach((item) => {
+            const purchaseItem = document.createElement("li");
+            purchaseItem.classList.add("list-group-item");
+            purchaseItem.textContent = `${item.title} - Cantidad: 1 - Precio: $${item.price}`;
+            purchases.appendChild(purchaseItem);
         });
 
+        cart.innerHTML = "";
+        cartItems = [];
+        totalPriceElement.textContent = "0";
+    };
 
-/////////////////////////////////////////////////////
+    const purchaseButton = document.querySelector(".btn-primary");
+    purchaseButton.addEventListener("click", completePurchase);
+
+    renderPeople();
+});
+
 const mainSection = document.getElementById("main-list-recipes");
 const colorChangeButton = document.getElementById("colorChangeButton");
 
@@ -222,7 +243,7 @@ const colors = ["white", "black", "lightgray"];
 let currentColorIndex = 0;
 
 colorChangeButton.addEventListener("click", () => {
-    currentColorIndex = (currentColorIndex + 1) % colors.length;
-    mainSection.style.backgroundColor = colors[currentColorIndex];
-    console.log(`Changed to ${colors[currentColorIndex]}`);
+currentColorIndex = (currentColorIndex + 1) % colors.length;
+mainSection.style.backgroundColor = colors[currentColorIndex];
+console.log(`Changed to ${colors[currentColorIndex]}`);
 });

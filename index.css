@@ -1,4 +1,5 @@
 html, body {
+        font-family: 'Lato', sans-serif;
     height: 100%;
     margin: 0;
     padding: 0;
@@ -19,4 +20,70 @@ header, main, footer {
     background: rgba(0, 0, 0, 0.5); 
     width: 100%;
     padding: 20px;
+}
+
+.modal-content {
+    border-radius: 10px;
+}
+
+.modal-header {
+    background-color: #010247;
+    color: white;
+    border-bottom: none;
+}
+
+.modal-title {
+    margin: 0 auto;
+}
+
+.btn-close {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.form-label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+}
+
+.form-control:focus {
+    border-color: #000000;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(5, 5, 5, 0.25);
+}
+
+
+.btn-primary {
+    background-color: #000214;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #000218;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+
+footer {
+    padding: 1rem 0;
+    background-color: #000000;
+    color: #000000;
 }

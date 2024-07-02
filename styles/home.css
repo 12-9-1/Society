@@ -1,12 +1,10 @@
-
+body {
+    font-family: 'Lato', sans-serif;
+}
 #main-list-recipes {
 
     background-color:solid #000;
     background-color: white; 
-}
-
-.margin-right-custom {
-    margin-left: 20px; 
 }
 
 .carousel-item img {
@@ -16,16 +14,10 @@
 }
 
 
-.card {
-    margin: 15px;
-
-}
-
 .card-img-top {
     height: 200px; 
     object-fit: cover; 
 }
-
 
 
 #main_people {
@@ -46,7 +38,7 @@
 }
 
 .btn-primary {
-    background-color: rgb(55, 55, 121);
+    background-color: rgb(1, 1, 36);
     color: rgb(255, 255, 255);
     font-size: 16px;
     padding: 8px 16px; 
@@ -58,10 +50,63 @@
     padding: 8px 16px; 
 }
 
-
-#todo-list-container {
-    margin: 20px;
+.modal-header {
+    background-color: #191c20;
+    color: white;
+    border-bottom: none;
 }
+
+
+.btn-close {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+
+#main_people {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+
+#cart li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+
+
+.btn-custom:hover {
+    background-color: #0a0d11;
+}
+
+
+.btn-primary:hover {
+    background-color: #0d168a;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
 
 
 .footer1 .py-5 {
