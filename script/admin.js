@@ -1,8 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const isAdmin = false;
-
-    const defaultProducts = [             
-        {
+document.addEventListener('DOMContentLoaded', () => { 
+    const defaultProducts = [  {
         "title": "Curso de Cocina Italiana",
         "url": "https://example.com/cocina-italiana",
         "description": "Aprende a cocinar auténtica comida italiana con recetas tradicionales y técnicas modernas.",
@@ -101,68 +98,88 @@ document.addEventListener('DOMContentLoaded', () => {
         "imageURL": "https://universidades.app/assets/img/blog/la-importancia-del-diseno-multimedia-en-la-era-digital_1.jpg",
         "idProduct": "010",
         "price": 80000
-    } ];
+    }  ];
 
+    // Recuperar productos guardados en localStorage
     const savedProducts = JSON.parse(localStorage.getItem('products')) || [];
-    const people = [...defaultProducts, ...savedProducts];
+
+    // Combinar productos predeterminados con los guardados
+    const products = [...defaultProducts, ...savedProducts];
 
     const sectionToRender = document.getElementById("main_people");
     const cart = document.getElementById("cart");
     const totalPriceElement = document.getElementById("total-price");
-    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    let purchasedItems = [];  
+    let cartItems = [];
 
     const createPersonCard = (person) => {
         const { title, url, description, name, imageURL, category, price, idProduct } = person;
-
+    
         const card = document.createElement("div");
         card.classList.add("card", "m-3");
         card.style.width = "18rem";
-
+    
         const image = document.createElement("img");
         image.src = imageURL;
         image.classList.add("card-img-top");
         image.alt = title;
-
+    
         const cardBody = document.createElement("div");
         cardBody.classList.add("card-body");
-
+    
         const cardTitle = document.createElement("h5");
         cardTitle.classList.add("card-title");
         cardTitle.textContent = title;
-
+    
         const cardText = document.createElement("p");
         cardText.classList.add("card-text");
         cardText.textContent = description;
-
+    
         const cardAuthor = document.createElement("p");
         cardAuthor.classList.add("card-text");
         cardAuthor.textContent = `Autor: ${name}`;
-
+    
         const cardCategory = document.createElement("p");
         cardCategory.classList.add("card-text");
         cardCategory.textContent = `Categoría: ${category}`;
-
+    
         const cardPrice = document.createElement("p");
         cardPrice.classList.add("card-text");
         cardPrice.textContent = `Precio: $${price}`;
-
+    
+        const cartButton = document.createElement("button");
+        cartButton.textContent = "Agregar al carrito";
+        cartButton.classList.add("btn", "btn-primary"); 
+        cartButton.onclick = () => addToCart(person);
+    
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Eliminar";
+        deleteButton.classList.add("btn", "btn-danger"); 
+        deleteButton.onclick = () => {
+            // Eliminar del DOM
+            sectionToRender.removeChild(card);
+    
+            // Eliminar del localStorage
+            removeFromLocalStorage(idProduct);
+        };
+    
         cardBody.appendChild(cardTitle);
         cardBody.appendChild(cardAuthor);
         cardBody.appendChild(cardCategory);
         cardBody.appendChild(cardText);
         cardBody.appendChild(cardPrice);
-
-        const cartButton = document.createElement("button");
-        cartButton.textContent = "Agregar al carrito";
-        cartButton.classList.add("btn", "btn-primary");
-        cartButton.onclick = () => addToCart(person);
-
         cardBody.appendChild(cartButton);
-
+        cardBody.appendChild(deleteButton);
+    
         card.appendChild(image);
         card.appendChild(cardBody);
+    
         return card;
+    };
+
+    const removeFromLocalStorage = (productId) => {
+        let savedProducts = JSON.parse(localStorage.getItem('products')) || [];
+        savedProducts = savedProducts.filter(product => product.idProduct !== productId);
+        localStorage.setItem('products', JSON.stringify(savedProducts));
     };
 
     const addToCart = (product) => {
@@ -177,30 +194,15 @@ document.addEventListener('DOMContentLoaded', () => {
             newCartItem.id = `cart-item-${product.idProduct}`;
             newCartItem.innerHTML = `
                 ${product.title} - Cantidad: <span class="quantity">1</span>
-                <span class="remove-btn" onclick="removeFromCart('${product.idProduct}', ${product.price})"><i class="bi bi-trash fa-2xl"></i></span>
+                <span class="remove-btn" onclick="removeFromCart('${product.idProduct}', ${product.price})">x</span>
             `;
             cart.appendChild(newCartItem);
         }
-        updateTotalPrice(product.price); // Actualiza el precio total
-        cartItems.push(product); // Añade el producto al carrito
-        localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Guarda el carrito en localStorage
+        updateTotalPrice(product.price);
+        cartItems.push(product);
+        updateCartInLocalStorage();
     };
 
-    const removeFromCart = (productId, productPrice) => {
-        const cartItem = document.getElementById(`cart-item-${productId}`);
-        if (cartItem) {
-            const quantityElement = cartItem.querySelector('.quantity');
-            let quantity = parseInt(quantityElement.textContent);
-            if (quantity > 1) {
-                quantityElement.textContent = --quantity;
-            } else {
-                cart.removeChild(cartItem);
-            }
-            updateTotalPrice(-productPrice);
-            cartItems = cartItems.filter(item => item.idProduct !== productId);
-            localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Actualiza el almacenamiento
-        }
-    };
     window.removeFromCart = (productId, productPrice) => {
         const cartItem = document.getElementById(`cart-item-${productId}`);
         const quantityElement = cartItem.querySelector('.quantity');
@@ -210,8 +212,12 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             cart.removeChild(cartItem);
         }
+
+        // Actualiza la lista cartItems
+        cartItems = cartItems.filter(item => item.idProduct !== productId);
+
         updateTotalPrice(-productPrice);
-        cartItems = cartItems.filter(item => item.idProduct !== productId || (--quantity) >= 0);
+        updateCartInLocalStorage();
     };
 
     const updateTotalPrice = (amount) => {
@@ -219,37 +225,58 @@ document.addEventListener('DOMContentLoaded', () => {
         totalPriceElement.textContent = (currentTotal + amount).toFixed(2);
     };
 
-    const renderPeople = () => {
-        people.forEach((person) => {
-            const personCard = createPersonCard(person);
-            sectionToRender.appendChild(personCard);
-        });
+    const updateCartInLocalStorage = () => {
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
     };
 
-    const completePurchase = () => {
-        if (cartItems.length === 0) {
-            alert("No hay productos en el carrito.");
-            return;
-        }
-
-        cartItems.forEach((item) => {
-            const purchaseItem = document.createElement("li");
-            purchaseItem.classList.add("list-group-item");
-            purchaseItem.textContent = `${item.title} - Cantidad: 1 - Precio: $${item.price}`;
-            purchases.appendChild(purchaseItem);
+    const renderProducts = () => {
+        sectionToRender.innerHTML = ''; // Limpiar la sección antes de renderizar nuevamente.
+        products.forEach((product) => {
+            const productCard = createPersonCard(product);
+            sectionToRender.appendChild(productCard);
         });
-
-        cart.innerHTML = "";
-        cartItems = [];
-        totalPriceElement.textContent = "0";
     };
+    
+    renderProducts();
 
-    const purchaseButton = document.querySelector(".btn-primary");
-    purchaseButton.addEventListener("click", completePurchase);
+    document.getElementById("product-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        addNewProduct();
+    });
 
-    renderPeople();
+    const addNewProduct = () => {
+        const title = document.getElementById("product-title").value.trim();
+        const url = document.getElementById("product-url").value.trim();
+        const description = document.getElementById("product-description").value.trim();
+        const name = document.getElementById("product-name").value.trim();
+        const category = document.getElementById("product-category").value.trim();
+        const imageURL = document.getElementById("product-imageURL").value.trim();
+        const price = parseFloat(document.getElementById("product-price").value.trim());
+    
+        if (title === '' || isNaN(price)) return;
+    
+        const newProduct = {
+            title,
+            url,
+            description,
+            name,
+            category,
+            imageURL,
+            idProduct: Date.now().toString(),
+            price
+        };
+    
+        // Guardar en localStorage
+        const savedProducts = JSON.parse(localStorage.getItem('products')) || [];
+        savedProducts.push(newProduct);
+        localStorage.setItem('products', JSON.stringify(savedProducts));
+    
+        const newProductCard = createPersonCard(newProduct);
+        sectionToRender.appendChild(newProductCard);
+    
+        document.getElementById("product-form").reset();
+    };
 });
-
 
 /////////////////////////////////////////////////////
 const mainSection = document.getElementById("main-list-recipes");
