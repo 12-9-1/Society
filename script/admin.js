@@ -1,106 +1,110 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-    const people = [
-        {
-            "title": "Curso de Cocina Italiana",
-            "url": "https://example.com/cocina-italiana",
-            "description": "Aprende a cocinar auténtica comida italiana con recetas tradicionales y técnicas modernas.",
-            "name": "Mary Cadogan",
-            "category": "Cocina",
-            "imageURL": "https://pymstatic.com/5844/conversions/personas-emocionales-wide_webp.webp",
-            "idProduct": "001",
-            "price": 50
-        },
-        {
-            "title": "Panadería y Pastelería Avanzada",
-            "url": "https://example.com/panaderia-pasteleria",
-            "description": "Conviértete en un experto en panadería y pastelería con este curso avanzado.",
-            "name": "Max Zapata",
-            "category": "Panadería",
-            "imageURL": "https://img.freepik.com/foto-gratis/chico-guapo-seguro-posando-contra-pared-blanca_176420-32936.jpg",
-            "idProduct": "002",
-            "price": 60
-        },
-        {
-            "title": "Nutrición y Dietética",
-            "url": "https://example.com/nutricion-dietetica",
-            "description": "Conoce los principios de la nutrición y aprende a planificar dietas equilibradas.",
-            "name": "Sara Buenfeld",
-            "category": "Salud",
-            "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9OCKpuik-hWtBDBUw_BDka_y3mpz5gKUOpQ&s",
-            "idProduct": "003",
-            "price": 40
-        },
-        {
-            "title": "Repostería Creativa",
-            "url": "https://example.com/reposteria-creativa",
-            "description": "Descubre técnicas de decoración y elaboración de postres únicos.",
-            "name": "Paul Hollywood",
-            "category": "Repostería",
-            "imageURL": "https://img.freepik.com/fotos-premium/sentirse-feliz-satisfecho-poderoso-ajuste-flexion-biceps-musculosos-luciendo-fuerte-despues-gimnasio_1194-429528.jpg?w=360",
-            "idProduct": "004",
-            "price": 55
-        },
-        {
-            "title": "Cocina Saludable",
-            "url": "https://example.com/cocina-saludable",
-            "description": "Aprende a preparar comidas saludables y deliciosas para toda la familia.",
-            "name": "Bonnie Desmazery",
-            "category": "Cocina",
-            "imageURL": "https://qph.cf2.quoracdn.net/main-qimg-d57295d91aeb7bbded4184e258709543-pjlq",
-            "idProduct": "005",
-            "price": 45
-        },
-        {
-            "title": "Fotografía de Alimentos",
-            "url": "https://example.com/fotografia-alimentos",
-            "description": "Domina el arte de la fotografía de alimentos y crea imágenes irresistibles.",
-            "name": "Troy Evans",
-            "category": "Fotografía",
-            "imageURL": "https://st4.depositphotos.com/4678277/31218/i/450/depositphotos_312181688-stock-photo-close-up-portrait-of-his.jpg",
-            "idProduct": "006",
-            "price": 70
-        },
-        {
-            "title": "Cata de Vinos",
-            "url": "https://example.com/cata-vinos",
-            "description": "Aprende a catar vinos como un profesional y descubre los secretos del vino.",
-            "name": "Caroline Hire",
-            "category": "Bebidas",
-            "imageURL": "https://images.losandes.com.ar/resizer/0sD9wGWcg1BuNLsYYqFVb7nmLPI=/0x0:0x0/980x640/filters:quality(80):format(webp)/cloudfront-us-east-1.images.arcpublishing.com/grupoclarin/23WSOVW565FOTHPBKO4YNW6SZE.jpeg",
-            "idProduct": "007",
-            "price": 65
-        },
-        {
-            "title": "Cocina Vegana",
-            "url": "https://example.com/cocina-vegana",
-            "description": "Descubre deliciosas recetas veganas que te sorprenderán.",
-            "name": "Miriam Nice",
-            "category": "Cocina",
-            "imageURL": "https://img.freepik.com/foto-gratis/retrato-hermoso-mujer-joven-posicion-pared-gris_231208-10760.jpg?size=626&ext=jpg&ga=GA1.1.672697106.1719446400&semt=sph",
-            "idProduct": "008",
-            "price": 50
-        },
-        {
-            "title": "Fotografía de Naturaleza",
-            "url": "https://example.com/fotografia-naturaleza",
-            "description": "Aprende a capturar la belleza de la naturaleza con tu cámara.",
-            "name": "Ramirez Camilla ",
-            "category": "Fotografía",
-            "imageURL": "https://img.freepik.com/foto-gratis/apuesto-joven-brazos-cruzados-sobre-fondo-blanco_23-2148222620.jpg?ga=GA1.1.240933676.1719523105&semt=sph",
-            "idProduct": "009",
-            "price": 75
-        },
-        {
-            "title": "Arte y Diseño Digital",
-            "url": "https://example.com/arte-diseno-digital",
-            "description": "Conviértete en un maestro del diseño digital con este completo curso.",
-            "name": "Katy Greenwood",
-            "category": "Arte y Diseño",
-            "imageURL": "https://img.freepik.com/foto-gratis/alegre-mujer-mediana-edad-cabello-rizado_1262-20859.jpg?ga=GA1.1.240933676.1719523105&semt=sph",
-            "idProduct": "010",
-            "price": 80
-        }
-    ];
+document.addEventListener('DOMContentLoaded', () => { 
+    const defaultProducts = [  {
+        "title": "Curso de Cocina Italiana",
+        "url": "https://example.com/cocina-italiana",
+        "description": "Aprende a cocinar auténtica comida italiana con recetas tradicionales y técnicas modernas.",
+        "name": "Mary Cadogan",
+        "category": "Cocina",
+        "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStKPGag3bjLH2ShROMqCE3wTsz2TaNtPI5-g&s",
+        "idProduct": "001",
+        "price": 12000
+    },
+    {
+        "title": "Panadería y Pastelería Avanzada",
+        "url": "https://example.com/panaderia-pasteleria",
+        "description": "Conviértete en un experto en panadería y pastelería con este curso avanzado.",
+        "name": "Max Zapata",
+        "category": "Panadería",
+        "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlLZKyuAoAY5EC0iyQrlUxjbyJrA_zE2fq9qfMlmbgpPNQd_n7GWNQd-7SIVQRibPljRk&usqp=CAU",
+        "idProduct": "002",
+        "price": 15000
+    },
+    {
+        "title": "Nutrición y Dietética",
+        "url": "https://example.com/nutricion-dietetica",
+        "description": "Conoce los principios de la nutrición y aprende a planificar dietas equilibradas.",
+        "name": "Sara Buenfeld",
+        "category": "Salud",
+        "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxtRUzHl2wlHQ2pRQ1hV-0vSBuaNBN3aUVJA&s",
+        "idProduct": "003",
+        "price": 40000
+    },
+    {
+        "title": "Repostería Creativa",
+        "url": "https://example.com/reposteria-creativa",
+        "description": "Descubre técnicas de decoración y elaboración de postres únicos.",
+        "name": "Paul Hollywood",
+        "category": "Repostería",
+        "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrGykigzg7ygnMGrR18S96m2LiedeZgrpgXQ&s",
+        "idProduct": "004",
+        "price": 50000
+    },
+    {
+        "title": "Cocina Saludable",
+        "url": "https://example.com/cocina-saludable",
+        "description": "Aprende a preparar comidas saludables y deliciosas para toda la familia.",
+        "name": "Bonnie Desmazery",
+        "category": "Cocina",
+        "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxm_rrob3gIV_NIR8RSKc_NGH2dIq2VWrVEA&s",
+        "idProduct": "005",
+        "price": 45
+    },
+    {
+        "title": "Fotografía ",
+        "url": "https://example.com/fotografia-alimentos",
+        "description": "Domina el arte de la fotografía de alimentos y crea imágenes irresistibles.",
+        "name": "Troy Evans",
+        "category": "Fotografía",
+        "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY5KB-mmG6Ct40jGaRNIoanUm9Z_xxtN3IBA&s",
+        "idProduct": "006",
+        "price": 75000
+    },
+    {
+        "title": "Cata de Vinos",
+        "url": "https://example.com/cata-vinos",
+        "description": "Aprende a catar vinos como un profesional y descubre los secretos del vino.",
+        "name": "Caroline Hire",
+        "category": "Bebidas",
+        "imageURL": "https://gastronomicainternacional.com/wp-content/uploads/2020/05/cata-de-vinos-1-1024x576.jpg",
+        "idProduct": "007",
+        "price": 65000
+    },
+    {
+        "title": "Cocina Vegana",
+        "url": "https://example.com/cocina-vegana",
+        "description": "Descubre deliciosas recetas veganas que te sorprenderán.",
+        "name": "Miriam Nice",
+        "category": "Cocina",
+        "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkHTV7ZDs2ZAYZF7GVLjrupYwqhnAvazCHiw&s",
+        "idProduct": "008",
+        "price": 50000
+    },
+    {
+        "title": "Fotografía de Naturaleza",
+        "url": "https://example.com/fotografia-naturaleza",
+        "description": "Aprende a capturar la belleza de la naturaleza con tu cámara.",
+        "name": "Ramirez Camilla ",
+        "category": "Fotografía",
+        "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlpXzZBZFtLRb1_yH4abkQffSFjJW-qlSjeQ&s",
+        "idProduct": "009",
+        "price": 75000
+    },
+    {
+        "title": "Arte y Diseño Digital",
+        "url": "https://example.com/arte-diseno-digital",
+        "description": "Conviértete en un maestro del diseño digital con este completo curso.",
+        "name": "Katy Greenwood",
+        "category": "Arte y Diseño",
+        "imageURL": "https://universidades.app/assets/img/blog/la-importancia-del-diseno-multimedia-en-la-era-digital_1.jpg",
+        "idProduct": "010",
+        "price": 80000
+    }  ];
+
+    // Recuperar productos guardados en localStorage
+    const savedProducts = JSON.parse(localStorage.getItem('products')) || [];
+
+    // Combinar productos predeterminados con los guardados
+    const products = [...defaultProducts, ...savedProducts];
 
     const sectionToRender = document.getElementById("main_people");
     const cart = document.getElementById("cart");
@@ -109,51 +113,55 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     const createPersonCard = (person) => {
         const { title, url, description, name, imageURL, category, price, idProduct } = person;
-
+    
         const card = document.createElement("div");
         card.classList.add("card", "m-3");
         card.style.width = "18rem";
-
+    
         const image = document.createElement("img");
         image.src = imageURL;
         image.classList.add("card-img-top");
         image.alt = title;
-
+    
         const cardBody = document.createElement("div");
         cardBody.classList.add("card-body");
-
+    
         const cardTitle = document.createElement("h5");
         cardTitle.classList.add("card-title");
         cardTitle.textContent = title;
-
+    
         const cardText = document.createElement("p");
         cardText.classList.add("card-text");
         cardText.textContent = description;
-
+    
         const cardAuthor = document.createElement("p");
         cardAuthor.classList.add("card-text");
         cardAuthor.textContent = `Autor: ${name}`;
-
+    
         const cardCategory = document.createElement("p");
         cardCategory.classList.add("card-text");
         cardCategory.textContent = `Categoría: ${category}`;
-
+    
         const cardPrice = document.createElement("p");
         cardPrice.classList.add("card-text");
         cardPrice.textContent = `Precio: $${price}`;
-
+    
         const cartButton = document.createElement("button");
         cartButton.textContent = "Agregar al carrito";
         cartButton.classList.add("btn", "btn-primary"); 
         cartButton.onclick = () => addToCart(person);
-
+    
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Eliminar";
         deleteButton.classList.add("btn", "btn-danger"); 
         deleteButton.onclick = () => {
+            // Eliminar del DOM
             sectionToRender.removeChild(card);
+    
+            // Eliminar del localStorage
+            removeFromLocalStorage(idProduct);
         };
-
+    
         cardBody.appendChild(cardTitle);
         cardBody.appendChild(cardAuthor);
         cardBody.appendChild(cardCategory);
@@ -161,14 +169,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
         cardBody.appendChild(cardPrice);
         cardBody.appendChild(cartButton);
         cardBody.appendChild(deleteButton);
-
+    
         card.appendChild(image);
         card.appendChild(cardBody);
-
+    
         return card;
     };
-   
 
+    const removeFromLocalStorage = (productId) => {
+        let savedProducts = JSON.parse(localStorage.getItem('products')) || [];
+        savedProducts = savedProducts.filter(product => product.idProduct !== productId);
+        localStorage.setItem('products', JSON.stringify(savedProducts));
+    };
 
     const addToCart = (product) => {
         const cartItem = document.getElementById(`cart-item-${product.idProduct}`);
@@ -188,6 +200,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
         updateTotalPrice(product.price);
         cartItems.push(product);
+        updateCartInLocalStorage();
     };
 
     window.removeFromCart = (productId, productPrice) => {
@@ -199,8 +212,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
         } else {
             cart.removeChild(cartItem);
         }
+
+        // Actualiza la lista cartItems
+        cartItems = cartItems.filter(item => item.idProduct !== productId);
+
         updateTotalPrice(-productPrice);
-        cartItems = cartItems.filter(item => item.idProduct !== productId || (--quantity) >= 0);
+        updateCartInLocalStorage();
     };
 
     const updateTotalPrice = (amount) => {
@@ -208,14 +225,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
         totalPriceElement.textContent = (currentTotal + amount).toFixed(2);
     };
 
-    const renderPeople = () => {
-        people.forEach((person) => {
-            const personCard = createPersonCard(person);
-            sectionToRender.appendChild(personCard);
-        });
+    const updateCartInLocalStorage = () => {
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
     };
 
-    renderPeople();
+    const renderProducts = () => {
+        sectionToRender.innerHTML = ''; // Limpiar la sección antes de renderizar nuevamente.
+        products.forEach((product) => {
+            const productCard = createPersonCard(product);
+            sectionToRender.appendChild(productCard);
+        });
+    };
+    
+    renderProducts();
 
     document.getElementById("product-form").addEventListener("submit", (e) => {
         e.preventDefault();
@@ -230,9 +252,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const category = document.getElementById("product-category").value.trim();
         const imageURL = document.getElementById("product-imageURL").value.trim();
         const price = parseFloat(document.getElementById("product-price").value.trim());
-
+    
         if (title === '' || isNaN(price)) return;
-
+    
         const newProduct = {
             title,
             url,
@@ -243,18 +265,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
             idProduct: Date.now().toString(),
             price
         };
-
-
-
+    
+        // Guardar en localStorage
+        const savedProducts = JSON.parse(localStorage.getItem('products')) || [];
+        savedProducts.push(newProduct);
+        localStorage.setItem('products', JSON.stringify(savedProducts));
+    
         const newProductCard = createPersonCard(newProduct);
         sectionToRender.appendChild(newProductCard);
-
+    
         document.getElementById("product-form").reset();
     };
 });
-
-    
-
 
 /////////////////////////////////////////////////////
 const mainSection = document.getElementById("main-list-recipes");
